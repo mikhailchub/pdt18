@@ -3,17 +3,17 @@ package com.example.tests;
 import org.testng.annotations.Test;
 
 @Test(priority=1)
-public class GroupCreationTests extends TestBase {
+public class Test01_GroupCreationTests extends TestBase {
 
   @Test(priority=1)
   public void testNonEmptyGroupCreation() throws Exception {
 	openMainPage();
     gotoGroupsPage();
     initGroupCreation();
-    Data_group group = new Data_group();
-    group.group_name = "group name 1";
-    group.group_header = "header 1";
-    group.group_footer = "footer 1";
+    Data_Group group = new Data_Group();
+    group.name = "group name 1";
+    group.header = "header 1";
+    group.footer = "footer 1";
 	fillGroupForm(group);
     submitGroupCreation();
     returnToGroupsPage();
@@ -24,10 +24,10 @@ public class GroupCreationTests extends TestBase {
 	openMainPage();
     gotoGroupsPage();
     initGroupCreation();
-    Data_group group = new Data_group();
-    group.group_name = "@#$^SFG$+-.-1e";
-    group.group_header = "-23h";
-    group.group_footer = "^$%we#er_=`~";
+    Data_Group group = new Data_Group();
+    group.name = "@#$^SFG$+-.-1e";
+    group.header = "-23h";
+    group.footer = "^$%we#er_=`~";
 	fillGroupForm(group);
     submitGroupCreation();
     returnToGroupsPage();
@@ -38,7 +38,7 @@ public class GroupCreationTests extends TestBase {
 	openMainPage();
     gotoGroupsPage();
     initGroupCreation();
-    fillGroupForm(new Data_group("", "", ""));
+    fillGroupForm(new Data_Group("", "", ""));
     submitGroupCreation();
     returnToGroupsPage();
   }
