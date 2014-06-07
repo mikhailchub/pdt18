@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All" parallel="none">
+    <test verbose="1" name="Groups" annotations="JDK">
+        <classes>
+            <class name="com.example.tests.GroupCreationTests">
+                <methods>
+                    <include name="testGroupCreationPositiveNonEmpty" />
+                    <include name="testGroupCreationNegativeArbitrarySymbols" />
+                    <include name="testGroupCreationNegativeEmpty" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="1" name="Contacts" annotations="JDK">
+        <classes>
+            <class name="com.example.tests.ContactCreationTests">
+                <methods>
+                    <include name="testContactCreationPositiveNonEmpty" />
+                    <include name="testContactCreationNegativeEmpty" />
+                    <include name="testContactCreationNegativeArbitrarySymbols" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
