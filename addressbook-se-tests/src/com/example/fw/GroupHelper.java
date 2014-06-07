@@ -46,4 +46,8 @@ public class GroupHelper extends HelperBase {
 	    click(By.name("update"));
 	}
 
+	public int getGroupsNumber() {
+		return getItemsNumber(By.xpath("//input[@name='selected[]']"));
+	}
+
 }

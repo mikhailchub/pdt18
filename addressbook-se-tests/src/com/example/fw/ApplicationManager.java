@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 
+
+
 public class ApplicationManager {
 
 	public WebDriver driver;
@@ -15,11 +17,13 @@ public class ApplicationManager {
 	private GroupHelper groupHelper;
 	private ContactHelper contactHelper;	
 	
+	public final int TIMEOUT = 10;
+	
 	// Constructor
 	public ApplicationManager() {
 		driver = new FirefoxDriver();
 	    baseUrl = "http://localhost:8080/";
-	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	    driver.manage().timeouts().implicitlyWait(TIMEOUT, TimeUnit.SECONDS);
 	    
 /* // Static initialisation of helpers	    
 	    navigationHelper = new NavigationHelper(this);

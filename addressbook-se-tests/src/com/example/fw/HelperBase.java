@@ -1,11 +1,16 @@
 package com.example.fw;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class HelperBase {
 	
@@ -35,6 +40,21 @@ public abstract class HelperBase {
 		driver.findElement(locator).click();
 	}
 
+	protected WebElement getWebElementWhenClickable(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver,5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+		return driver.findElement(locator);
+	}
+
+	public int getItemsNumber(By locator) {
+		int n;
+		driver.manage().timeouts().implicitlyWait(0, TimeUnit.MILLISECONDS);
+		n = driver.findElements(locator).size();
+		driver.manage().timeouts().implicitlyWait(manager.TIMEOUT, TimeUnit.SECONDS);
+		return n;
+	}
+	
 	public boolean isElementPresent(By by) {
 	    try {
 	      driver.findElement(by);

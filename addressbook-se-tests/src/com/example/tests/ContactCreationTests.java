@@ -5,10 +5,10 @@ import static org.testng.AssertJUnit.assertEquals;
 
 
 public class ContactCreationTests extends TestBase {
-    private static Integer n;
+    private static int n;
 	
   @Test(priority=1)
-  public void testContactCreationPositiveNonEmpty() throws Exception {
+  public void testContactCreationPositiveNonEmpty() {
     app.getNavigationHelper().openMainPage();
     app.getContactHelper().returnToAddressBook();
     n = app.getContactHelper().getContactsNumber(); // get items number before adding contact
@@ -35,7 +35,7 @@ public class ContactCreationTests extends TestBase {
   }
 
   @Test(priority=2)
-  public void testContactCreationNegativeEmpty() throws Exception {
+  public void testContactCreationNegativeEmpty() {
     app.getNavigationHelper().openMainPage();
     app.getContactHelper().returnToAddressBook();
     n = app.getContactHelper().getContactsNumber(); // get items number before adding contact
@@ -62,7 +62,7 @@ public class ContactCreationTests extends TestBase {
   }
 
   @Test(priority=3)
-  public void testContactCreationNegativeArbitrarySymbols() throws Exception {
+  public void testContactCreationNegativeArbitrarySymbols() {
     app.getNavigationHelper().openMainPage();
     app.getContactHelper().returnToAddressBook();
     n = app.getContactHelper().getContactsNumber(); // get items number before adding contact

@@ -1,7 +1,6 @@
 package com.example.fw;
 
 import org.openqa.selenium.By;
-
 import com.example.tests.Data_Contact;
 
 
@@ -40,6 +39,27 @@ public class ContactHelper extends HelperBase  {
 	}
 	
 	public int getContactsNumber() {
-		return driver.findElements(By.xpath("//td/input")).size();
+		return getItemsNumber(By.xpath("//td/input[@name='selected[]']"));
 	}
+	
+//	private void selectContactByIndex(int index) {
+//		click(By.xpath("//table[@id='maintable']//tr[" + (index + 1) + "]//td[1]//input"));
+//	}
+
+	public void initContactModification(int index) {
+//		selectContactByIndex(index); // this step is unnecessary
+//		click(By.xpath("//table[@id='maintable']//tr[" + (index + 1) + "]//td[7]//a"));
+	    getWebElementWhenClickable(By.xpath("//table[@id='maintable']//tr[" + (index + 1) + "]//td[7]//a")).click(); // same as click but waits until clickable
+	}
+
+	public void submitContactModification() {
+//	    click(By.xpath("//input[@name='update'][@value='Update']"));
+	    getWebElementWhenClickable(By.xpath("//input[@name='update'][@value='Update']")).click(); // same as click but waits until clickable
+	}
+	
+	public void deleteContact(int index) {
+		initContactModification(index); // open "Update" form first to access "Delete" button
+		getWebElementWhenClickable(By.xpath("//input[@name='update'][@value='Delete']")).click(); // wait for "Delete" button to appear, and then click on it
+	}
+	
 }
