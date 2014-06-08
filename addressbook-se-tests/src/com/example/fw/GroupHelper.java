@@ -1,8 +1,12 @@
 package com.example.fw;
 
-import org.openqa.selenium.By;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.example.tests.Data_Group;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import com.example.tests.DataGroup;
 
 public class GroupHelper extends HelperBase {
 
@@ -14,7 +18,7 @@ public class GroupHelper extends HelperBase {
 	    click(By.name("new"));
 	}
 
-	public void fillGroupForm(Data_Group group) {
+	public void fillGroupForm(DataGroup group) {
 	    fillTxtField(By.name("group_name"), group.name);
 	    fillTxtField(By.name("group_header"), group.header);
 	    fillTxtField(By.name("group_footer"), group.footer);
@@ -39,7 +43,7 @@ public class GroupHelper extends HelperBase {
 	}
 
 	private void selectGroupByIndex(int index) {
-		click(By.xpath("//input[@name='selected[]'][" + index + "]"));
+		click(By.xpath("//input[@name='selected[]'][" + (index+1) + "]"));
 	}
 
 	public void submitGroupModification() {
@@ -48,6 +52,18 @@ public class GroupHelper extends HelperBase {
 
 	public int getGroupsNumber() {
 		return getItemsNumber(By.xpath("//input[@name='selected[]']"));
+	}
+
+	public List<DataGroup> getGroups() {
+		List<DataGroup> groups = new ArrayList<DataGroup>();
+		List<WebElement> checkboxes = getItems(By.name("selected[]"));
+		for (WebElement checkbox : checkboxes) {
+			DataGroup group = new DataGroup();
+			String title = checkbox.getAttribute("title");
+			group.name = title.substring("Select (".length(), title.length() - ")".length());
+			groups.add(group);
+		}
+		return groups;
 	}
 
 }

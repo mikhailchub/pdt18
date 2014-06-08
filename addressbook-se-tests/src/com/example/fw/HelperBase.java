@@ -1,5 +1,6 @@
 package com.example.fw;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
@@ -31,7 +32,9 @@ public abstract class HelperBase {
 	}
 
 	protected void fillDropdownField(By locator, String text) {
-		if (text != null && !text.isEmpty()) {
+		// !text.isEmpty check is added because DropDown field can not be filled with ""
+		// so it's skipped when value == ""
+		if (text != null && !text.isEmpty()) {	
 			new Select(driver.findElement(locator)).selectByVisibleText(text);		
 		}
 	}
@@ -49,10 +52,17 @@ public abstract class HelperBase {
 
 	public int getItemsNumber(By locator) {
 		int n;
-		driver.manage().timeouts().implicitlyWait(0, TimeUnit.MILLISECONDS);
+		driver.manage().timeouts().implicitlyWait(0, TimeUnit.MILLISECONDS); // avoid too long test execution if list is empty
 		n = driver.findElements(locator).size();
-		driver.manage().timeouts().implicitlyWait(manager.TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(manager.TIMEOUT, TimeUnit.SECONDS); // set wait settings back
 		return n;
+	}
+
+	public List<WebElement> getItems(By locator) {
+		driver.manage().timeouts().implicitlyWait(0, TimeUnit.MILLISECONDS); // avoid too long test execution if list is empty
+		List<WebElement> items = driver.findElements(locator);
+		driver.manage().timeouts().implicitlyWait(manager.TIMEOUT, TimeUnit.SECONDS); // set wait settings back
+		return items;
 	}
 	
 	public boolean isElementPresent(By by) {

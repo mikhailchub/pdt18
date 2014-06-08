@@ -14,7 +14,7 @@ public class ContactCreationTests extends TestBase {
     n = app.getContactHelper().getContactsNumber(); // get items number before adding contact
     app.getContactHelper().initContactCreation();
     // Define test data
-	    Data_Contact contact = new Data_Contact();
+	    DataContact contact = new DataContact();
 	    contact.fname = "fname";
 	    contact.lname = "lname";
 	    contact.addr1 = "address 1";
@@ -41,7 +41,7 @@ public class ContactCreationTests extends TestBase {
     n = app.getContactHelper().getContactsNumber(); // get items number before adding contact
     app.getContactHelper().initContactCreation();
     // Define test data
-	    Data_Contact contact = new Data_Contact();
+	    DataContact contact = new DataContact();
 	    contact.fname = "";
 	    contact.lname = "";
 	    contact.addr1 = "";
@@ -68,7 +68,7 @@ public class ContactCreationTests extends TestBase {
     n = app.getContactHelper().getContactsNumber(); // get items number before adding contact
     app.getContactHelper().initContactCreation();
     // Define test data
-	    Data_Contact contact = new Data_Contact();
+	    DataContact contact = new DataContact();
 	    contact.fname = "@#$@%$#FGH0-==/.";
 	    contact.lname = "+-345#$%(@*`'@#$";
 	    contact.addr1 = "";

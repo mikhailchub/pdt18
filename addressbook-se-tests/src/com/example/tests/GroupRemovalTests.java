@@ -1,20 +1,37 @@
 package com.example.tests;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class GroupRemovalTests extends TestBase {
 
-	private static int n;
-	
 	@Test
 	public void testGroupRemovalPositive() {
 		app.getNavigationHelper().openMainPage();
 	    app.getNavigationHelper().gotoGroupsPage();
-	    n = app.getGroupHelper().getGroupsNumber(); // get items number before deleting group
-		app.getGroupHelper().deleteGroup(1);
+
+	    // save old state
+	    List<DataGroup> oldList = app.getGroupHelper().getGroups();
+
+	    // generate random index of selected element
+	    Random rnd = new Random();
+	    int index = rnd.nextInt(oldList.size()-1);
+	    
+	    // perform test actions
+		app.getGroupHelper().deleteGroup(index);
 	    app.getGroupHelper().returnToGroupsPage();
-	    Assert.assertTrue(n-1 == app.getGroupHelper().getGroupsNumber()); // verify that number of groups decreased
+
+	    // save new state
+	    List<DataGroup> newList = app.getGroupHelper().getGroups();
+
+	    // compare states
+	    oldList.remove(index); 
+	    Collections.sort(oldList);
+	    Assert.assertEquals(newList, oldList);    
 	}
 	
 }

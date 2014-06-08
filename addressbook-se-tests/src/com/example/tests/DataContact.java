@@ -1,6 +1,6 @@
 package com.example.tests;
 
-public class Data_Contact {
+public class DataContact {
 	public String fname;
 	public String lname;
 	public String addr1;
@@ -15,7 +15,7 @@ public class Data_Contact {
 	public String addr2;
 	public String phone2;
 
-	public Data_Contact() {
+	public DataContact() {
 	}
 	
 }

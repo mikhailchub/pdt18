@@ -10,7 +10,7 @@ public class ContactModificationTests extends TestBase{
 	    app.getContactHelper().returnToAddressBook();
 	    app.getContactHelper().initContactModification(1);
 	    // Define test data
-	    Data_Contact contact = new Data_Contact();
+	    DataContact contact = new DataContact();
 	    contact.fname = "modified First Name";
 	    contact.lname = "modified Last Name";
 	    app.getContactHelper().fillContact(contact);

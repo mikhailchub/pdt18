@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All" parallel="none">
-    <test verbose="1" name="Groups" annotations="JDK">
+<suite name="All" preserve-order="true" parallel="false">
+    <test verbose="1" name="GroupsCreation" annotations="JDK">
         <classes>
             <class name="com.example.tests.GroupCreationTests">
                 <methods>
@@ -12,7 +12,26 @@
             </class>
         </classes>
     </test>
-    <test verbose="1" name="Contacts" annotations="JDK">
+    <test verbose="1" name="GroupsModification" annotations="JDK">
+        <classes>
+            <class name="com.example.tests.GroupModificationTests">
+                <methods>
+                    <include name="testGroupModificationPositive" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="1" name="GroupsRemoval" annotations="JDK">
+        <classes>
+            <class name="com.example.tests.GroupRemovalTests">
+                <methods>
+                    <include name="testGroupRemovalPositive" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test verbose="1" name="ContactsCreation" annotations="JDK">
         <classes>
             <class name="com.example.tests.ContactCreationTests">
                 <methods>
@@ -23,5 +42,22 @@
             </class>
         </classes>
     </test>
-
+    <test verbose="1" name="ContactsModification" annotations="JDK">
+        <classes>
+            <class name="com.example.tests.ContactModificationTests">
+                <methods>
+                    <include name="testContactModificationPositive" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="1" name="ContactsRemoval" annotations="JDK">
+        <classes>
+            <class name="com.example.tests.ContactRemovalTests">
+                <methods>
+                    <include name="testContactRemovalPositive" />
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>
