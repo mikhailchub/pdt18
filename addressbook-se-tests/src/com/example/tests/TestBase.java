@@ -25,7 +25,7 @@ public class TestBase {
 		app.stop();
 	}
 
-	  @DataProvider
+	@DataProvider	//for Groups
 	  public Iterator<Object[]> randomValidGroupGenerator() {
 		  List<Object[]> list = new ArrayList<Object[]>();
 		  for (int i = 0; i < 5; i++) {
@@ -37,7 +37,27 @@ public class TestBase {
 		  }
 		  return list.iterator();
 	  }
-		
+
+	  @DataProvider	//for Contacts
+	  public Iterator<Object[]> randomValidContactGenerator() {
+		  List<Object[]> list = new ArrayList<Object[]>();
+		  for (int i = 0; i < 5; i++) {
+			  DataContact contact = new DataContact();
+			  contact.fname = generateRandomString("FirstName_");
+			  contact.lname = generateRandomString("LastName_");
+			  contact.email = generateRandomString("email@");
+			  contact.addr1 = generateRandomString("");
+			  contact.phoneHome = generateRandomString("");
+			  contact.phoneMob = generateRandomString("");
+			  contact.phoneWork = generateRandomString("");
+			  contact.email2 = generateRandomString("");
+			  contact.addr2 = generateRandomString("");
+			  contact.phone2 = generateRandomString("");
+			  list.add(new Object[]{contact});
+		  }
+		  return list.iterator();
+	  }
+	  
 	  public String generateRandomString(String str) {
 		  Random rnd = new Random();
 		  if (rnd.nextInt(3) == 0) {

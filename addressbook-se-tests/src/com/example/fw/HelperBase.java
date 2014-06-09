@@ -65,6 +65,22 @@ public abstract class HelperBase {
 		return items;
 	}
 	
+	private String getItemText(By locator) {
+		String str = driver.findElement(locator).getText();
+//		if (str.isEmpty()) {return null;}  // needed for comparison in tests assertions and makes sense if dataProvider initializes data object with null values
+		if (str.isEmpty()) {return "";}  //  when all fields of data object, used in our test, are initialized with some value != null
+		else {return str;}		
+	}
+
+	public String getTableCellValue(String tableXPathLocator, int rowIndex, int colIndex) {
+		return getItemText(By.xpath(tableXPathLocator + "//tr[" + rowIndex + "]" + "//td[" + colIndex + "]"));
+	}	
+
+	
+	public String getTableCellValue(String tableXPathLocator, int rowIndex, String columnXPathLocator) {
+		return getItemText(By.xpath(tableXPathLocator + "//tr[" + rowIndex + "]" + columnXPathLocator));
+	}	
+	
 	public boolean isElementPresent(By by) {
 	    try {
 	      driver.findElement(by);

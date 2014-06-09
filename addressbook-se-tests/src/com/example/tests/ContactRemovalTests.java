@@ -1,20 +1,37 @@
 package com.example.tests;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ContactRemovalTests extends TestBase {
-
-	private static int n;
 	
 	@Test
 	public void testContactRemovalPositive() {
 	    app.getNavigationHelper().openMainPage();
 	    app.getContactHelper().returnToAddressBook();
-	    n = app.getContactHelper().getContactsNumber(); // get items number before deleting contact
-	    app.getContactHelper().deleteContact(1);
+	    
+	    // save old state
+	    List<DataContact> oldList = app.getContactHelper().getContacts();
+	    
+	    // generate random index of selected element
+	    Random rnd = new Random();
+	    int index = rnd.nextInt(oldList.size()-1);
+
+	    // perform test actions
+	    app.getContactHelper().deleteContact(index);
 	    app.getContactHelper().returnToAddressBook();
-	    Assert.assertTrue(n-1 == app.getContactHelper().getContactsNumber(), "Contacts number is not decreased after deletion!");
+
+	    // save new state
+	    List<DataContact> newList = app.getContactHelper().getContacts();
+
+	    // compare states
+	    oldList.remove(index);
+	    Collections.sort(oldList);
+	    Assert.assertEquals(newList, oldList);    	    	    
 	}
 
 }

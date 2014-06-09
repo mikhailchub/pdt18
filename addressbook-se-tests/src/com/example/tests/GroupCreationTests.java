@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class GroupCreationTests extends TestBase {
 
   @Test (dataProvider = "randomValidGroupGenerator")
-  public void testGroupCreationPositiveNonEmpty(DataGroup group) {
+  public void testGroupCreationPositive(DataGroup group) {
 	app.getNavigationHelper().openMainPage();
     app.getNavigationHelper().gotoGroupsPage();
 

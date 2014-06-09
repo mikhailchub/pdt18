@@ -1,5 +1,8 @@
 package com.example.fw;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import com.example.tests.DataContact;
 
@@ -49,7 +52,7 @@ public class ContactHelper extends HelperBase  {
 	public void initContactModification(int index) {
 //		selectContactByIndex(index); // this step is unnecessary
 //		click(By.xpath("//table[@id='maintable']//tr[" + (index + 1) + "]//td[7]//a"));
-	    getWebElementWhenClickable(By.xpath("//table[@id='maintable']//tr[" + (index + 1) + "]//td[7]//a")).click(); // same as click but waits until clickable
+	    getWebElementWhenClickable(By.xpath("//table[@id='maintable']//tr[" + (index + 2) + "]//td[7]//a")).click(); // same as click but waits until clickable
 	}
 
 	public void submitContactModification() {
@@ -62,4 +65,18 @@ public class ContactHelper extends HelperBase  {
 		getWebElementWhenClickable(By.xpath("//input[@name='update'][@value='Delete']")).click(); // wait for "Delete" button to appear, and then click on it
 	}
 	
+	public List<DataContact> getContacts() {
+		List<DataContact> contacts = new ArrayList<DataContact>();
+		int n = getContactsNumber();
+		for (int i = 0; i < n; i++) {
+			DataContact contact = new DataContact();
+			contact.fname = getTableCellValue("//table[@id='maintable']", i + 2, 2);
+			contact.lname = getTableCellValue("//table[@id='maintable']", i + 2, 3);
+			contact.email = getTableCellValue("//table[@id='maintable']", i + 2, "//td[4]//a");
+//			contact.phoneHome = getTableCellValue("//table[@id='maintable']", i + 2, 5); // strange TestApp logic detected
+			contacts.add(contact);
+		}
+		return contacts;
+	}
+
 }

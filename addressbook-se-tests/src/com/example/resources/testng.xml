@@ -5,9 +5,7 @@
         <classes>
             <class name="com.example.tests.GroupCreationTests">
                 <methods>
-                    <include name="testGroupCreationPositiveNonEmpty" />
-                    <include name="testGroupCreationNegativeArbitrarySymbols" />
-                    <include name="testGroupCreationNegativeEmpty" />
+                    <include name="testGroupCreationPositive" />
                 </methods>
             </class>
         </classes>
@@ -35,9 +33,7 @@
         <classes>
             <class name="com.example.tests.ContactCreationTests">
                 <methods>
-                    <include name="testContactCreationPositiveNonEmpty" />
-                    <include name="testContactCreationNegativeEmpty" />
-                    <include name="testContactCreationNegativeArbitrarySymbols" />
+                    <include name="testContactCreationPositive" />
                 </methods>
             </class>
         </classes>
