@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class GroupModificationTests extends TestBase {
 	
-	@Test (dataProvider = "randomValidGroupGenerator")
+	@Test (dataProviderClass = TestDataProvider.class, dataProvider = "randomValidGroupGenerator")
 	public void testGroupModificationPositive(DataGroup group) {
 		app.getNavigationHelper().openMainPage();
 	    app.getNavigationHelper().gotoGroupsPage();

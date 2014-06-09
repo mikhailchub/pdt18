@@ -24,6 +24,7 @@ public class ApplicationManager {
 		driver = new FirefoxDriver();
 	    baseUrl = "http://localhost:8080/";
 	    driver.manage().timeouts().implicitlyWait(TIMEOUT, TimeUnit.SECONDS);
+	    driver.manage().window().maximize();
 	    
 /* // Static initialisation of helpers	    
 	    navigationHelper = new NavigationHelper(this);

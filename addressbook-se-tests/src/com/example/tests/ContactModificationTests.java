@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class ContactModificationTests extends TestBase{
 	
-	@Test (dataProvider = "randomValidContactGenerator")
+	@Test (dataProviderClass = TestDataProvider.class, dataProvider = "randomValidContactGenerator")
 	public void testContactModificationPositive(DataContact contact) {
 	    app.getNavigationHelper().openMainPage();
 	    app.getContactHelper().returnToAddressBook();
